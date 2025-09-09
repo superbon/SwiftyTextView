@@ -174,7 +174,7 @@ extension SwiftyTextView: UITextViewDelegate {
     }
     
     public func textViewDidChangeSelection(_ textView: UITextView) {
-        placeHolderTextLayer.isHidden = text.count > 0
+        placeHolderTextLayer.isHidden = text?.count ?? 0 > 0
         textDelegate?.textViewDidChangeSelection?(textView)
     }
     
