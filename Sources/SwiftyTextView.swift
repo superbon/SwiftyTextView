@@ -128,10 +128,10 @@ public class SwiftyTextView: UITextView {
 
 extension SwiftyTextView: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
-        placeHolderTextLayer.isHidden = text.count > 0
- 
+        placeHolderTextLayer.isHidden = (text?.count ?? 0) > 0
+
         if showTextCountView {
-            countdownTextLayer.string = "\(text.count)/\(maxNumberOfWords)"
+            countdownTextLayer.string = "\(text?.count ?? 0)/\(maxNumberOfWords)"
         }
         
         textDelegate?.textViewDidChange?(textView)
