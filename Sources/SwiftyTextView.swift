@@ -55,17 +55,22 @@ public class SwiftyTextView: UITextView {
     public weak var textDelegate: SwiftyTextViewDelegate?
     
     public override var text: String? {
-        // boilerplate code needed to make watchers work properly:
         get {
             return super.text
         }
         set {
-            super.text = newValue
+            // Only assign if newValue is not nil
+            if let safeText = newValue {
+                super.text = safeText
+            } else {
+                super.text = "" // or just leave it empty
+            }
+
             NotificationCenter.default.post(
                 name: UITextView.textDidChangeNotification,
-                object: self)
+                object: self
+            )
         }
-
     }
     
     override open func awakeFromNib() {
