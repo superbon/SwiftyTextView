@@ -54,7 +54,7 @@ public class SwiftyTextView: UITextView {
     
     public weak var textDelegate: SwiftyTextViewDelegate?
     
-    public override var text: String! {
+    public override var text: String? {
         // boilerplate code needed to make watchers work properly:
         get {
             return super.text
